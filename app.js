@@ -202,6 +202,7 @@ while (i < 1000) {
   console.log(`no: ${i}`);
   i *= 2;
 }
+console.log(`First value exceeding 1000 is: ${i}`); // logging the first value of i that exceeds 1000 even if the loop fails.
 // task 4
 let count = 10;
 while (count >= 1) {
@@ -235,7 +236,7 @@ console.log(`No. of vowels in 'Dibyadarshan' is: ${countVowels}`);
 const myStats = {
   modulesCompleted: 4,
   projectsBuilt: 2,
-  commitsMade: true,
+  commitsMade: 15, // property name suggests a count
   currentLearningPoint: 'JS',
   activeLearning: true,
 };
@@ -246,7 +247,10 @@ for (const stats in myStats) {
 const numbers = [3, 7, 2, 9, 4, 11, 6, 8];
 for (const num of numbers) {
   if (num < 5) continue;
-  if (num > 10) break;
+  if (num > 10) {
+    console.log(`Number that broke the loop and exceed 10 is: ${num}`); // logging the number that broke the loop and exceeded 10.
+    break;
+  }
   console.log(`${num} is greater than 5 and less than 10.`);
 }
 // Part 6 - task 9
@@ -275,9 +279,11 @@ for (const recipe of recipes) {
 const avgPrice = totalPrice / recipes.length;
 console.log(`Average price is: ₹${avgPrice.toFixed(1)}`);
 console.log('=== Vegetarian recipes ===');
-for (const [index, recipe] of recipes.entries()) {
+let vegCount = 0; //fixed with another variable instead of using index from array
+for (const recipe of recipes) {
   if (!recipe.isVegetarian) continue;
-  console.log(`${index}. ${recipe.name}`);
+  vegCount++;
+  console.log(`${vegCount}. ${recipe.name}`);
 }
 // Part 7 - task 10
 console.log('=== Every Meals type Combination ===');
