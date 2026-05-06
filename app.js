@@ -184,113 +184,210 @@
 
 // Loops and Iteration Excercise
 // Part 1 - task 1
-console.log('=== Multiplication table of 7 ===');
-const n = 7;
-for (let i = 1; i <= 10; i++) {
-  let result = n * i;
-  console.log(`${n} x ${i} = ${result}`);
-}
-// task 2
-let sum = 0;
-for (let i = 1; i <= 100; i++) {
-  sum += i;
-}
-console.log(`Sum of all numbers from 1 to 100 is: ${sum}`);
-// Part 2 - task 3
-let i = 1;
-while (i < 1000) {
-  console.log(`no: ${i}`);
-  i *= 2;
-}
-console.log(`First value exceeding 1000 is: ${i}`); // logging the first value of i that exceeds 1000 even if the loop fails.
-// task 4
-let count = 10;
-while (count >= 1) {
-  console.log(count);
-  count--;
-}
-console.log('Blast off!');
-// Part 3 - task 5
-const skills = ['HTML', 'CSS', 'Git', 'JS', 'BootStrap'];
-for (const [index, skill] of skills.entries()) {
-  console.log(`${index + 1}. ${skill}`);
-}
-// task 6
-let countVowels = 0;
-for (const vowel of 'Dibyadarshan') {
-  switch (vowel.toLowerCase()) {
-    case 'a':
-    case 'e':
-    case 'i':
-    case 'o':
-    case 'u':
-      countVowels += 1;
-      break;
+// console.log('=== Multiplication table of 7 ===');
+// const n = 7;
+// for (let i = 1; i <= 10; i++) {
+//   let result = n * i;
+//   console.log(`${n} x ${i} = ${result}`);
+// }
+// // task 2
+// let sum = 0;
+// for (let i = 1; i <= 100; i++) {
+//   sum += i;
+// }
+// console.log(`Sum of all numbers from 1 to 100 is: ${sum}`);
+// // Part 2 - task 3
+// let i = 1;
+// while (i < 1000) {
+//   console.log(`no: ${i}`);
+//   i *= 2;
+// }
+// console.log(`First value exceeding 1000 is: ${i}`); // logging the first value of i that exceeds 1000 even if the loop fails.
+// // task 4
+// let count = 10;
+// while (count >= 1) {
+//   console.log(count);
+//   count--;
+// }
+// console.log('Blast off!');
+// // Part 3 - task 5
+// const skills = ['HTML', 'CSS', 'Git', 'JS', 'BootStrap'];
+// for (const [index, skill] of skills.entries()) {
+//   console.log(`${index + 1}. ${skill}`);
+// }
+// // task 6
+// let countVowels = 0;
+// for (const vowel of 'Dibyadarshan') {
+//   switch (vowel.toLowerCase()) {
+//     case 'a':
+//     case 'e':
+//     case 'i':
+//     case 'o':
+//     case 'u':
+//       countVowels += 1;
+//       break;
 
-    default:
-      break;
-  }
+//     default:
+//       break;
+//   }
+// }
+// console.log(`No. of vowels in 'Dibyadarshan' is: ${countVowels}`);
+// // Part 4 - task 7
+// const myStats = {
+//   modulesCompleted: 4,
+//   projectsBuilt: 2,
+//   commitsMade: 15, // property name suggests a count
+//   currentLearningPoint: 'JS',
+//   activeLearning: true,
+// };
+// for (const stats in myStats) {
+//   console.log(`${stats}: ${myStats[stats]}`);
+// }
+// // Part 5 - task 8
+// const numbers = [3, 7, 2, 9, 4, 11, 6, 8];
+// for (const num of numbers) {
+//   if (num < 5) continue;
+//   if (num > 10) {
+//     console.log(`Number that broke the loop and exceed 10 is: ${num}`); // logging the number that broke the loop and exceeded 10.
+//     break;
+//   }
+//   console.log(`${num} is greater than 5 and less than 10.`);
+// }
+// // Part 6 - task 9
+// const recipes = [
+//   { name: 'Chicken Handi', isVegetarian: false, rating: 4.2, price: 350 },
+//   { name: 'Matar Paneer', isVegetarian: true, rating: 3.9, price: 180 },
+//   { name: 'Dal Tadka', isVegetarian: true, rating: 3.2, price: 120 },
+// ];
+// console.log('=== List of all recipes ===');
+// for (const recipe of recipes) {
+//   console.log(`${recipe.name} - ₹${recipe.price}`);
+// }
+// console.log('=== Highest rated recipe ===');
+// let highRate = recipes[0];
+// for (const recipe of recipes) {
+//   if (recipe.rating > highRate.rating) {
+//     highRate = recipe;
+//   }
+// }
+// console.log(`Top rated recipe: ${highRate.name}`);
+// console.log('=== Average price of all recipes ===');
+// let totalPrice = 0;
+// for (const recipe of recipes) {
+//   totalPrice += recipe.price;
+// }
+// const avgPrice = totalPrice / recipes.length;
+// console.log(`Average price is: ₹${avgPrice.toFixed(1)}`);
+// console.log('=== Vegetarian recipes ===');
+// let vegCount = 0; //fixed with another variable instead of using index from array
+// for (const recipe of recipes) {
+//   if (!recipe.isVegetarian) continue;
+//   vegCount++;
+//   console.log(`${vegCount}. ${recipe.name}`);
+// }
+// // Part 7 - task 10
+// console.log('=== Every Meals type Combination ===');
+// const meals = ['Breakfast', 'Lunch', 'Dinner'];
+// const types = ['Veg', 'Non-Veg', 'Vegan'];
+// for (const meal of meals) {
+//   for (const type of types) {
+//     console.log(`${meal} - ${type}`);
+//   }
+// }
+
+// Arrays Excercise
+// Part 1 - task 1
+const mySkills = ['HTML', 'CSS', 'Git', 'JS', 'Bootstrap', 'DevTools'];
+console.log(mySkills.at(0)); //first skill
+console.log(mySkills.at(-1)); //last skill
+console.log(mySkills.at(2)); //middle
+console.log(mySkills.at(3)); //middle
+console.log(`No of total skills: ${mySkills.length}`); // Total count of skills in array
+// task 2
+mySkills.push('Tailwind'); //added new skiil at end
+console.log('== Skills ==');
+console.log(mySkills); //skills with Tailwind at end
+const removed = mySkills.shift(); // removed first skill
+console.log(`removed skill: ${removed}`); // HTML removed from first
+console.log('== Skills ==');
+console.log(mySkills); // updated array
+
+// Part 2 - task 3
+mySkills.splice(2, 0, 'Typescript');
+console.log('== Skills ==');
+console.log(mySkills); // updated array
+// task 4
+const coreSkills = mySkills.slice(0, 3);
+console.log('== Core Skills ==');
+console.log(coreSkills); // newly created array
+console.log('== Skills ==');
+console.log(mySkills); // un-modified array
+
+// Part 3 - task 5
+if (mySkills.includes('JS')) {
+  console.log('JS is in my skills.'); //checking if JS is in skills
 }
-console.log(`No. of vowels in 'Dibyadarshan' is: ${countVowels}`);
-// Part 4 - task 7
-const myStats = {
-  modulesCompleted: 4,
-  projectsBuilt: 2,
-  commitsMade: 15, // property name suggests a count
-  currentLearningPoint: 'JS',
-  activeLearning: true,
-};
-for (const stats in myStats) {
-  console.log(`${stats}: ${myStats[stats]}`);
-}
-// Part 5 - task 8
-const numbers = [3, 7, 2, 9, 4, 11, 6, 8];
-for (const num of numbers) {
-  if (num < 5) continue;
-  if (num > 10) {
-    console.log(`Number that broke the loop and exceed 10 is: ${num}`); // logging the number that broke the loop and exceeded 10.
-    break;
-  }
-  console.log(`${num} is greater than 5 and less than 10.`);
-}
-// Part 6 - task 9
+console.log(`JS is in index: ${mySkills.indexOf('JS')}`); // first index of JS
+
+// Part 4 - task 6
+const newSkills = ['React', 'Node'];
+const fullStack = [...mySkills, ...newSkills];
+console.log('== Full Stack Skills ==');
+console.log(fullStack);
+// task 7
+const [skill1, skill2, skill3] = fullStack.slice(0, 3); //assigning first three from index 0 to 3 with excluding index 3.
+console.log(`first skill: ${skill1}`); //CSS
+console.log(`second skill: ${skill2}`); //Git
+console.log(`third skill: ${skill3}`); //Typescript
+// task 8
+const [first, ...rest] = fullStack;
+console.log(`first skill: ${first}`);
+console.log('-- rest skills --');
+console.log(rest);
+
+// Part 5 - task 9
 const recipes = [
-  { name: 'Chicken Handi', isVegetarian: false, rating: 4.2, price: 350 },
-  { name: 'Matar Paneer', isVegetarian: true, rating: 3.9, price: 180 },
-  { name: 'Dal Tadka', isVegetarian: true, rating: 3.2, price: 120 },
+  { name: 'Chicken Handi', isVeg: false, rating: 4.8, price: 350 },
+  { name: 'Matar Paneer', isVeg: true, rating: 4.2, price: 180 },
+  { name: 'Dal Tadka', isVeg: true, rating: 3.9, price: 120 },
+  { name: 'Biryani', isVeg: false, rating: 4.6, price: 400 },
+  { name: 'Gulab Jamun', isVeg: true, rating: 4.7, price: 80 },
 ];
-console.log('=== List of all recipes ===');
-for (const recipe of recipes) {
-  console.log(`${recipe.name} - ₹${recipe.price}`);
-}
-console.log('=== Highest rated recipe ===');
-let highRate = recipes[0];
-for (const recipe of recipes) {
-  if (recipe.rating > highRate.rating) {
-    highRate = recipe;
-  }
-}
-console.log(`Top rated recipe: ${highRate.name}`);
-console.log('=== Average price of all recipes ===');
-let totalPrice = 0;
-for (const recipe of recipes) {
-  totalPrice += recipe.price;
-}
-const avgPrice = totalPrice / recipes.length;
-console.log(`Average price is: ₹${avgPrice.toFixed(1)}`);
-console.log('=== Vegetarian recipes ===');
-let vegCount = 0; //fixed with another variable instead of using index from array
-for (const recipe of recipes) {
-  if (!recipe.isVegetarian) continue;
-  vegCount++;
-  console.log(`${vegCount}. ${recipe.name}`);
-}
-// Part 7 - task 10
-console.log('=== Every Meals type Combination ===');
-const meals = ['Breakfast', 'Lunch', 'Dinner'];
-const types = ['Veg', 'Non-Veg', 'Vegan'];
-for (const meal of meals) {
-  for (const type of types) {
-    console.log(`${meal} - ${type}`);
-  }
-}
+const recipeNames = recipes.map((recipe) => recipe.name);
+console.log('== Recipes ==');
+console.log(recipeNames); //recipe names
+// task 10
+const recipeVeg = recipes.filter((recipe) => recipe.isVeg);
+console.log('== Vegetarian Recipes ==');
+const recipeVegNames = recipeVeg.map((recipeVegName) => recipeVegName.name);
+console.log(recipeVegNames); // Veg recipes
+// task 11
+const recipePrice = recipes.map((recipe) => recipe.price);
+console.log('== Total price of recipes ==');
+const totalPrice = recipePrice.reduce((sum, price) => sum + price, 0);
+console.log(totalPrice); // Total price of all recipes
+// task 12
+const topRecipes = recipes.find((recipe) => recipe.rating > 4.5);
+console.log('=== Top Recipe ==');
+console.log(topRecipes.name);
+// task 13
+console.log(
+  `Does any recipe cost more than ₹300: ${recipes.some((r) => r.price >= 300)}`, //true
+);
+console.log(
+  `Does all recipes rated above 3.5: ${recipes.every((r) => r.rating > 3.5)}`, //true
+);
+
+// Part 6 - task 14
+recipes.sort((a, b) => a.price - b.price); //price in ascending order
+const sortedRecipes = recipes.map((recipe) => recipe.name); //names of recipes sorted by price
+console.log('== Recipes in Price ascending order ==');
+console.log(sortedRecipes);
+// task 15
+const vegRecipeResult = recipes
+  .filter((recipe) => recipe.isVeg) //filtered by veg
+  .sort((a, b) => b.rating - a.rating) // rating in descending order
+  .map((recipe) => recipe.name) //only recipe names
+  .join(', '); // recipe names joined by
+console.log('== Vegetarian Recipe sorted by rating in descending order ==');
+console.log(vegRecipeResult);
