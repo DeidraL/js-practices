@@ -298,10 +298,10 @@
 // Arrays Excercise
 // Part 1 - task 1
 const mySkills = ['HTML', 'CSS', 'Git', 'JS', 'Bootstrap', 'DevTools'];
-console.log(mySkills.at(0)); //first skill
-console.log(mySkills.at(-1)); //last skill
-console.log(mySkills.at(2)); //middle
-console.log(mySkills.at(3)); //middle
+console.log(`First skill: ${mySkills.at(0)}`); //first skill
+console.log(`Last skill: ${mySkills.at(-1)}`); //last skill
+const midIndex = Math.floor(mySkills.length / 2); //middle skill
+console.log(`Middle skill: ${mySkills.at(midIndex)}`); // used Math.floor feature for calc mid value
 console.log(`No of total skills: ${mySkills.length}`); // Total count of skills in array
 // task 2
 mySkills.push('Tailwind'); //added new skiil at end
@@ -313,7 +313,7 @@ console.log('== Skills ==');
 console.log(mySkills); // updated array
 
 // Part 2 - task 3
-mySkills.splice(2, 0, 'Typescript');
+mySkills.splice(2, 0, 'TypeScript');
 console.log('== Skills ==');
 console.log(mySkills); // updated array
 // task 4
@@ -335,10 +335,10 @@ const fullStack = [...mySkills, ...newSkills];
 console.log('== Full Stack Skills ==');
 console.log(fullStack);
 // task 7
-const [skill1, skill2, skill3] = fullStack.slice(0, 3); //assigning first three from index 0 to 3 with excluding index 3.
+const [skill1, skill2, skill3] = fullStack; //assigning first three from fullstack and ignoring rest of skills.
 console.log(`first skill: ${skill1}`); //CSS
 console.log(`second skill: ${skill2}`); //Git
-console.log(`third skill: ${skill3}`); //Typescript
+console.log(`third skill: ${skill3}`); //TypeScript
 // task 8
 const [first, ...rest] = fullStack;
 console.log(`first skill: ${first}`);
@@ -362,13 +362,12 @@ console.log('== Vegetarian Recipes ==');
 const recipeVegNames = recipeVeg.map((recipeVegName) => recipeVegName.name);
 console.log(recipeVegNames); // Veg recipes
 // task 11
-const recipePrice = recipes.map((recipe) => recipe.price);
 console.log('== Total price of recipes ==');
-const totalPrice = recipePrice.reduce((sum, price) => sum + price, 0);
+const totalPrice = recipes.reduce((sum, recipe) => sum + recipe.price, 0); // restructured with one line
 console.log(totalPrice); // Total price of all recipes
 // task 12
 const topRecipes = recipes.find((recipe) => recipe.rating > 4.5);
-console.log('=== Top Recipe ==');
+console.log('== Top Recipe ==');
 console.log(topRecipes.name);
 // task 13
 console.log(
@@ -379,8 +378,8 @@ console.log(
 );
 
 // Part 6 - task 14
-recipes.sort((a, b) => a.price - b.price); //price in ascending order
-const sortedRecipes = recipes.map((recipe) => recipe.name); //names of recipes sorted by price
+const sortedByPrice = [...recipes].sort((a, b) => a.price - b.price); //price in ascending order and using spread operator for copying recipes
+const sortedRecipes = sortedByPrice.map((recipe) => recipe.name); //names of recipes sorted by price
 console.log('== Recipes in Price ascending order ==');
 console.log(sortedRecipes);
 // task 15
