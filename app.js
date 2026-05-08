@@ -399,15 +399,15 @@ const myProfile = {
   city: 'Bhubaneswar',
   role: 'Developer',
   isEmployed: false,
-  skill: ['HTML', 'CSS', 'JS', 'Git'],
+  skill: ['HTML', 'CSS', 'JS', 'Git'], // array
   education: {
     degree: 'BTech',
     university: 'BPUT',
-  },
+  }, // nested object education
   social: {
     github: 'DeidraL',
     linkedin: 'Dibyadarshan Sahoo',
-  },
+  }, // nested object social
   introduce() {
     return `Hi, I'm ${this.name}, a ${this.role} based in ${this.city}.`;
   },
@@ -415,19 +415,22 @@ const myProfile = {
     return `I know ${this.skill.length} skills.`;
   },
 };
-console.log(myProfile.city); // accessing city
-console.log(myProfile.education.degree); //accessing degree from nested object education
-console.log(myProfile.social.github); //accessing github from nested object social
-console.log(myProfile.skill[0]); //accessing first skill from nested array skill
+console.log('=== My Profile ===');
+console.log(`City: ${myProfile.city}`); // accessing city
+console.log(`Education degree: ${myProfile.education.degree}`); //accessing degree from nested object education
+console.log(`Github profile: ${myProfile.social.github}`); //accessing github from nested object social
+console.log(`First skill: ${myProfile.skill[0]}`); //accessing first skill from nested array skill
 
 // Part 2 - task 2
 myProfile.yearsOfExperience = 1; // adding new property
 myProfile.isEmployed = true; // updating existing property value
 delete myProfile.age; //removed age property
-console.log('city' in myProfile); // checking if city is in myProfile
+console.log('Is my city in my profile:', 'city' in myProfile); // checking if city is in myProfile
+console.log('=== My Profile ===');
 console.log(myProfile); // Final object myProfile
 
 // Part 3 - task 3
+console.log('==== Introduction ====');
 console.log(myProfile.introduce()); //calling introduce function
 console.log(myProfile.skillCount()); // calling skillCount function
 
@@ -450,21 +453,17 @@ console.log(formatProfile(myProfile));
 // Part 5 - task 7
 const updatedProfile = { ...myProfile }; // copying the object myProfile
 updatedProfile.role = 'Senior Developer'; // updated the copy object of myProfile
-console.log(updatedProfile.role); // role in updatedProfile has been updated
-console.log(myProfile.role); // secured object myProfile
+console.log(`Future role: ${updatedProfile.role}`); // role in updatedProfile has been updated
+console.log(`Current role: ${myProfile.role}`); // secured object myProfile
 // task 8
-// const {
-//   name,
-//   role,
-//   city,
-//   social: { github },
-// } = myProfile; // but previously declared on task 4 and 5
+console.log('=== Profile summary ===');
 const baseInfo = { name, role }; // used previously declared name and role(task 4)
 const contactInfo = { city, github }; // used previously declared city(task 4) and github(task 5)
 const summary = { ...baseInfo, ...contactInfo };
 console.log(summary);
 
 // Part 6 - task 9
+console.log('=== Profile details ===');
 console.log(Object.keys(myProfile)); //logged all properties of myProfile
 console.log(Object.values(myProfile)); //logged all values of myProfile
 for (const [key, value] of Object.entries(myProfile)) {
@@ -492,11 +491,11 @@ function createProject(
     id: Date.now(),
     describe() {
       return `${this.projectName} - Built with ${this.tech.join(', ')} - Status: ${this.status}`;
-    },
+    }, // method to describe project
     launch(url) {
       this.url = url;
       return `${this.projectName} is now live at ${this.url}`;
-    },
+    }, // method to launch url
   };
 }
 const projectFirst = createProject(
@@ -504,11 +503,12 @@ const projectFirst = createProject(
   ['HTML', 'CSS'],
   'completed',
   'lord-of-the-recipes',
-);
-const projectSecond = createProject('Portfolio', ['HTML', 'CSS']);
+); // first project
+const projectSecond = createProject('Portfolio', ['HTML', 'CSS']); // second project
+console.log('=== Projects ===');
 console.log(projectFirst.describe());
 console.log(projectSecond.describe());
-console.log(projectSecond.launch());
+console.log(projectSecond.launch()); //url is undefined
 
 // Part 8 - task 11
 function createProfile(name, role, isEmployed = false, age) {
@@ -519,20 +519,22 @@ function createProfile(name, role, isEmployed = false, age) {
     age,
   };
 }
-const profile1 = createProfile('Dibyadarshan', 'Junior-developer', true, 23);
-const profile2 = createProfile('Rakesh', 'Tester', true, 22);
-const profile3 = createProfile('Lipun', 'Designer', false, 23);
-console.log(profile1);
-console.log(profile2);
-console.log(profile3);
-const profiles = [profile1, profile2, profile3];
-console.log(profiles);
-
-// const profileNames = profiles.map((profile) => profile.name);
-// .map((profile) => profile.role);
-// console.log(profileNames);
-const employedProfiles = profiles.filter((profile) => profile.isEmployed);
-const employedProfileNames = employedProfiles.map((p) => p.name);
+const profile1 = createProfile('Dibyadarshan', 'Junior-developer', true, 23); //1st profile
+const profile2 = createProfile('Rakesh', 'Tester', true, 22); //2nd profile
+const profile3 = createProfile('Lipun', 'Designer', false, 23); //3rd profile
+const profiles = [profile1, profile2, profile3]; //creating an array of 3 profiles
+console.log('=== Profiles ===');
+const namesAndRoles = profiles.map(({ name, role }) => ({ name, role })); // extracted only name and role
+console.log(namesAndRoles);
+const employedProfiles = profiles.filter((profile) => profile.isEmployed); // searched if profiles employed
+const employedProfileNames = employedProfiles.map((p) => p.name); // names of employed profiles
 console.log(`Employed Profiles: ${employedProfileNames}`);
-const searchProfile = profiles.find((e) => e.name === 'Rakesh');
+const searchProfile = profiles.find((e) => e.name === 'Rakesh'); // find specific profile
 console.log(searchProfile);
+const countEmployed = profiles.reduce((count, profile) => {
+  if (profile.isEmployed) {
+    return count + 1;
+  }
+  return count;
+}, 0); // count number of profiles employed
+console.log(`number of employed profiles: ${countEmployed}`);
