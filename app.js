@@ -399,7 +399,7 @@ const myProfile = {
   city: 'Bhubaneswar',
   role: 'Developer',
   isEmployed: false,
-  skill: ['HTML', 'CSS', 'JS', 'Git'], // array
+  skills: ['HTML', 'CSS', 'JS', 'Git'], // array
   education: {
     degree: 'BTech',
     university: 'BPUT',
@@ -412,14 +412,14 @@ const myProfile = {
     return `Hi, I'm ${this.name}, a ${this.role} based in ${this.city}.`;
   },
   skillCount() {
-    return `I know ${this.skill.length} skills.`;
+    return `I know ${this.skills.length} skills.`;
   },
 };
 console.log('=== My Profile ===');
 console.log(`City: ${myProfile.city}`); // accessing city
 console.log(`Education degree: ${myProfile.education.degree}`); //accessing degree from nested object education
 console.log(`Github profile: ${myProfile.social.github}`); //accessing github from nested object social
-console.log(`First skill: ${myProfile.skill[0]}`); //accessing first skill from nested array skill
+console.log(`First skill: ${myProfile.skills[0]}`); //accessing first skill from nested array skills
 
 // Part 2 - task 2
 myProfile.yearsOfExperience = 1; // adding new property
@@ -467,34 +467,25 @@ console.log('=== Profile details ===');
 console.log(Object.keys(myProfile)); //logged all properties of myProfile
 console.log(Object.values(myProfile)); //logged all values of myProfile
 for (const [key, value] of Object.entries(myProfile)) {
-  if (
-    typeof value !== 'object' &&
-    typeof value !== 'array' &&
-    typeof value !== 'function'
-  ) {
+  if (typeof value !== 'object' && typeof value !== 'function') {
     console.log(`${key} --> ${value}`);
-  }
+  } // since typeof [] === 'object
 }
 
 // Part 7 - task 10
-function createProject(
-  projectName,
-  tech = [],
-  status = 'in-progress',
-  url = null,
-) {
+function createProject(name, tech = [], status = 'in-progress', url = null) {
   return {
-    projectName,
+    name,
     tech,
     status,
     url,
     id: Date.now(),
     describe() {
-      return `${this.projectName} - Built with ${this.tech.join(', ')} - Status: ${this.status}`;
+      return `${this.name} - Built with ${this.tech.join(', ')} - Status: ${this.status}`;
     }, // method to describe project
     launch(url) {
       this.url = url;
-      return `${this.projectName} is now live at ${this.url}`;
+      return `${this.name} is now live at ${this.url}`;
     }, // method to launch url
   };
 }
@@ -502,26 +493,26 @@ const projectFirst = createProject(
   'Lord of the Recipes',
   ['HTML', 'CSS'],
   'completed',
-  'lord-of-the-recipes',
+  'https://deidral.github.io/lord-of-the-recipes/', //updated live link
 ); // first project
 const projectSecond = createProject('Portfolio', ['HTML', 'CSS']); // second project
 console.log('=== Projects ===');
 console.log(projectFirst.describe());
 console.log(projectSecond.describe());
-console.log(projectSecond.launch()); //url is undefined
+console.log(projectSecond.launch('https://github.com/DeidraL/portfolio-me')); //url passed with live link
 
 // Part 8 - task 11
-function createProfile(name, role, isEmployed = false, age) {
+function createProfile(name, role, age, isEmployed = false) {
   return {
     name,
     role,
     isEmployed,
     age,
   };
-}
-const profile1 = createProfile('Dibyadarshan', 'Junior-developer', true, 23); //1st profile
-const profile2 = createProfile('Rakesh', 'Tester', true, 22); //2nd profile
-const profile3 = createProfile('Lipun', 'Designer', false, 23); //3rd profile
+} // default parameter should be passed at end
+const profile1 = createProfile('Dibyadarshan', 'Junior-developer', 23, true); //1st profile
+const profile2 = createProfile('Rakesh', 'Tester', 22, true); //2nd profile
+const profile3 = createProfile('Lipun', 'Designer', 23); //3rd profile
 const profiles = [profile1, profile2, profile3]; //creating an array of 3 profiles
 console.log('=== Profiles ===');
 const namesAndRoles = profiles.map(({ name, role }) => ({ name, role })); // extracted only name and role
